@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour {
     private float m_Speed = 5;
 
     public PlayerState m_CurrentState;
+    public VectorValue startingPosition;
 
     // Use this for initialization
     void Start () {
@@ -31,6 +32,8 @@ public class PlayerMovement : MonoBehaviour {
         // Set the player to move down for hitbox bug
         m_Anim.SetFloat("moveX", 0);
         m_Anim.SetFloat("moveY", -1);
+
+        transform.position = startingPosition.initialValue;
 	}
 	
 	// Update is called once per frame

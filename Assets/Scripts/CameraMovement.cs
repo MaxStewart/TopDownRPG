@@ -12,7 +12,7 @@ public class CameraMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        transform.position = new Vector3(m_Target.position.x, m_Target.position.y, transform.position.z);
 	}
 	
 	// Update is called once per frame
