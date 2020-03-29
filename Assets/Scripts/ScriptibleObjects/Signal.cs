@@ -11,7 +11,7 @@ public class Signal : ScriptableObject {
     {
         for (int i = m_Listeners.Count-1; i >= 0; i--)
         {
-            m_Listeners[i].OnSignalRaised();
+            m_Listeners[i].OnSignalRaised(); // TODO this has a bug where theres a null SignalListener
         }
     }
 

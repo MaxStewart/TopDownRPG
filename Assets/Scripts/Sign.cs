@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class Sign : MonoBehaviour {
 
+    public Signal contextOn;
+    public Signal contextOff;
+
     [SerializeField] GameObject m_DialogBox;
     [SerializeField] Text m_DialogText;
     [SerializeField] string m_DialogString;
@@ -37,6 +40,7 @@ public class Sign : MonoBehaviour {
         if(other.tag == "Player")
         {
             m_PlayerInRange = true;
+            contextOn.Raise();
         }
     }
 
@@ -44,6 +48,7 @@ public class Sign : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            contextOff.Raise();
             m_PlayerInRange = false;
             if (m_DialogBox.activeInHierarchy)
             {
