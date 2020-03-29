@@ -11682,6 +11682,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 992307607, guid: 5d5a6194d1953744a95ee963e7004b60, type: 3}
+      propertyPath: m_DialogBox
+      value: 
+      objectReference: {fileID: 931936019}
+    - target: {fileID: 992307607, guid: 5d5a6194d1953744a95ee963e7004b60, type: 3}
+      propertyPath: m_DialogText
+      value: 
+      objectReference: {fileID: 1286489671}
+    - target: {fileID: 1736719720022006, guid: 5d5a6194d1953744a95ee963e7004b60, type: 3}
+      propertyPath: m_Name
+      value: Sign
+      objectReference: {fileID: 0}
     - target: {fileID: 4663934392419508, guid: 5d5a6194d1953744a95ee963e7004b60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.38
@@ -11714,19 +11726,16 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 212807351022691392, guid: 5d5a6194d1953744a95ee963e7004b60,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212807351022691392, guid: 5d5a6194d1953744a95ee963e7004b60,
-        type: 3}
-      propertyPath: m_SortingLayerID
+    - target: {fileID: 4663934392419508, guid: 5d5a6194d1953744a95ee963e7004b60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 212807351022691392, guid: 5d5a6194d1953744a95ee963e7004b60,
-        type: 3}
-      propertyPath: m_SortingLayer
+    - target: {fileID: 4663934392419508, guid: 5d5a6194d1953744a95ee963e7004b60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4663934392419508, guid: 5d5a6194d1953744a95ee963e7004b60, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -37166,29 +37175,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &992307606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1736719720022006, guid: 5d5a6194d1953744a95ee963e7004b60,
-    type: 3}
-  m_PrefabInstance: {fileID: 438544853}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &992307607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992307606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f614185cfdce993409bb53b7984cc6d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contextOn: {fileID: 11400000, guid: e6a4de7a39028a146b0a493596779b6d, type: 2}
-  contextOff: {fileID: 11400000, guid: 46c1a0a5f90ddd04ebc89bb595da63bd, type: 2}
-  m_DialogBox: {fileID: 931936019}
-  m_DialogText: {fileID: 1286489671}
-  m_DialogString: To the pond
 --- !u!1001 &1088862559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37532,6 +37518,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1156828154980780, guid: d294d1e54675f314480bb4be03bf65a2, type: 3}
+      propertyPath: m_Name
+      value: DialogBox
+      objectReference: {fileID: 0}
     - target: {fileID: 224710294321931808, guid: d294d1e54675f314480bb4be03bf65a2,
         type: 3}
       propertyPath: m_LocalPosition.x

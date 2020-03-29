@@ -61,23 +61,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\LogEnemy.cs" />
+    <Compile Include="Assets\Scripts\Game Stuff\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\Game Stuff\SignalListener.cs" />
     <Compile Include="Assets\Scripts\Knockback.cs" />
     <Compile Include="Assets\Scripts\NPC\ShopKeeper.cs" />
+    <Compile Include="Assets\Scripts\Objects\Interactable.cs" />
+    <Compile Include="Assets\Scripts\Objects\pot.cs" />
+    <Compile Include="Assets\Scripts\Objects\RoomMove.cs" />
+    <Compile Include="Assets\Scripts\Objects\SceneTransition.cs" />
+    <Compile Include="Assets\Scripts\Objects\Sign.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\ContextClue.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\HeartManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHit.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\pot.cs" />
-    <Compile Include="Assets\Scripts\RoomMove.cs" />
-    <Compile Include="Assets\Scripts\SceneTransition.cs" />
     <Compile Include="Assets\Scripts\ScriptibleObjects\FloatValue.cs" />
     <Compile Include="Assets\Scripts\ScriptibleObjects\Signal.cs" />
     <Compile Include="Assets\Scripts\ScriptibleObjects\VectorValue.cs" />
-    <Compile Include="Assets\Scripts\Sign.cs" />
-    <Compile Include="Assets\Scripts\SignalListener.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Unity/Unity Projects/TopDownRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
