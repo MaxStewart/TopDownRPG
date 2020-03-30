@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LogEnemy : Enemy {
 
-    [SerializeField] private float m_ChaseRadius;
-    [SerializeField] private float m_AttackRadius;
+    public float m_ChaseRadius;
+    public float m_AttackRadius;
 
-    private Rigidbody2D m_RigidBody;
-    private Transform m_Target;
-    private Animator m_Anim;
+    public Rigidbody2D m_RigidBody;
+    public Transform m_Target;
+    public Animator m_Anim;
 
     public Vector2 m_HomePosition;
 
@@ -20,6 +20,7 @@ public class LogEnemy : Enemy {
         m_Target = GameObject.FindGameObjectWithTag("Player").transform;
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_Anim = GetComponent<Animator>();
+        m_Anim.SetBool("wakeup", true);
 	}
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class LogEnemy : Enemy {
         CheckDistance();
 	}
 
-    private void CheckDistance()
+    public virtual void CheckDistance()
     {
         if (Vector2.Distance(transform.position, m_Target.position) <= m_ChaseRadius
             && Vector2.Distance(transform.position, m_Target.position) > m_AttackRadius)
@@ -53,7 +54,7 @@ public class LogEnemy : Enemy {
         m_Anim.SetFloat("moveY", setVector.y);
     }
 
-    private void ChangeAnim(Vector2 direction)
+    public void ChangeAnim(Vector2 direction)
     {
         if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
