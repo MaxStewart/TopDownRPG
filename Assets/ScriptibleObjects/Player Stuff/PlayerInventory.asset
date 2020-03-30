@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c2e45398f90e949ae3c5cece58b62d, type: 3}
-  m_Name: ContextClueOn
+  m_Script: {fileID: 11500000, guid: 51318d862b22a7545933f8c729aba939, type: 3}
+  m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  m_Listeners:
-  - {fileID: 0}
+  currentItem: {fileID: 0}
+  items: []
+  numberOfKeys: 2

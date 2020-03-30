@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49adb8ea0088fd4bb4f4b8a28981208, type: 3}
+  m_Name: SmallKey
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300104, guid: 620e2d470fa55b14182110e03e036c58, type: 3}
+  itemDescription: It's a small Key. Is there a door nearby?
+  isKey: 1

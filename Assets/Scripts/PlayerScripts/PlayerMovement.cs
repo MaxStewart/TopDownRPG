@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public PlayerState m_CurrentState;
     public VectorValue startingPosition;
+    public Inventory playerInventory;
+    public SpriteRenderer collectedItemSprite;
 
     // Use this for initialization
     void Start () {
@@ -39,6 +41,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (m_CurrentState == PlayerState.interact) return;
         m_Change = Vector2.zero;
         m_Change.x = Input.GetAxisRaw("Horizontal"); // Raw gives either 0 or 1
         m_Change.y = Input.GetAxisRaw("Vertical");
@@ -59,7 +62,30 @@ public class PlayerMovement : MonoBehaviour {
         yield return null; // Wait 1 frame so animation can start but not repeat
         m_Anim.SetBool("attacking", false);
         yield return new WaitForSeconds(0.3f);
-        m_CurrentState = PlayerState.walk;
+        if(m_CurrentState != PlayerState.interact)
+        {
+            m_CurrentState = PlayerState.walk;
+        }        
+    }
+
+    public void RaiseItem()
+    {
+        if (playerInventory.currentItem != null)
+        {
+            if (m_CurrentState != PlayerState.interact)
+            {
+                m_Anim.SetBool("CollectItem", true);
+                m_CurrentState = PlayerState.interact;
+                collectedItemSprite.sprite = playerInventory.currentItem.itemSprite;
+            }
+            else
+            {
+                m_Anim.SetBool("CollectItem", false);
+                m_CurrentState = PlayerState.idle;
+                collectedItemSprite.sprite = null;
+                playerInventory.currentItem = null;
+            }
+        }
     }
 
     private void UpdateAnimationAndMove()

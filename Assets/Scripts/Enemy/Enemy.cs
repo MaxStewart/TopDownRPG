@@ -50,5 +50,6 @@ public class Enemy : MonoBehaviour {
             m_EnemyState = EnemyState.idle;
             hitRigidbody.velocity = Vector2.zero;
         }
+
     }
 }
