@@ -16,6 +16,7 @@ public class Door : Interactable
     public bool isOpen;
     public GameObject door;
     public BoxCollider2D triggerArea;
+    public GameObject RoomTransfer;
 
     public Inventory playerInventory;
 
@@ -39,6 +40,7 @@ public class Door : Interactable
         isOpen = true;
         door.SetActive(false);
         triggerArea.enabled = false;
+        RoomTransfer.SetActive(true);
     }
 
     public void CloseDoor()
