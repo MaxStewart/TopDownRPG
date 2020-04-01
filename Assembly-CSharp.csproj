@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Game Stuff\SignalListener.cs" />
     <Compile Include="Assets\Scripts\Knockback.cs" />
     <Compile Include="Assets\Scripts\NPC\ShopKeeper.cs" />
+    <Compile Include="Assets\Scripts\Objects\Door.cs" />
     <Compile Include="Assets\Scripts\Objects\Interactable.cs" />
     <Compile Include="Assets\Scripts\Objects\pot.cs" />
     <Compile Include="Assets\Scripts\Objects\RoomMove.cs" />
