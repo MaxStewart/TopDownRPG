@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour {
 
     public EnemyState m_EnemyState;
     public FloatValue m_MaxHealth;
+    public GameObject deathEffect;
 
     private void Awake()
     {
@@ -32,7 +33,17 @@ public class Enemy : MonoBehaviour {
         if(m_CurrentHealth <= 0)
         {
             this.gameObject.SetActive(false);
+            DeathEffect();
         }
+    }
+
+    private void DeathEffect()
+    {
+        if (deathEffect != null)
+        {
+            GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
+        }        
     }
 
     public void Knock(Rigidbody2D hitRigidbody, float knockTime, float damage)
