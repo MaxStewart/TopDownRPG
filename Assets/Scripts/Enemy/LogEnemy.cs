@@ -20,7 +20,7 @@ public class LogEnemy : Enemy {
         m_Target = GameObject.FindGameObjectWithTag("Player").transform;
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_Anim = GetComponent<Animator>();
-        m_Anim.SetBool("wakeup", true);
+        m_Anim.SetBool("wakeUp", true);
 	}
 
     // Update is called once per frame
