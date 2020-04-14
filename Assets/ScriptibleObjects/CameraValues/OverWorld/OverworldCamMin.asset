@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 004a4685feff3fa479c70a8614076c4c, type: 3}
-  m_Name: OverworldCameraMax
+  m_Name: OverworldCamMin
   m_EditorClassIdentifier: 
-  initialValue: {x: 63, y: 21}
-  defaultValue: {x: 63, y: 21}
+  initialValue: {x: 9, y: -0.5}
+  defaultValue: {x: 9, y: -0.5}
