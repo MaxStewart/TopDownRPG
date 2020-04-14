@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
     public VectorValue startingPosition;
     public Inventory playerInventory;
     public SpriteRenderer collectedItemSprite;
+    public Signal playerHit;
 
     // Use this for initialization
     void Start () {
@@ -126,6 +127,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private IEnumerator KnockRoutine(float knockTime)
     {
+        playerHit.Raise();
         if (m_RigidBody != null)
         {
             yield return new WaitForSeconds(knockTime);

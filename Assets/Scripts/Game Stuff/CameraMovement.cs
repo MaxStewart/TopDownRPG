@@ -10,8 +10,11 @@ public class CameraMovement : MonoBehaviour {
     public Vector2 m_MaxPosition = new Vector2(23.7f, 14.74f);
     public Vector2 m_MinPosition = new Vector2(9.24f, -0.46f);
 
+    private Animator anim;
+
 	// Use this for initialization
 	void Start () {
+        anim = GetComponent<Animator>();
         transform.position = new Vector3(m_Target.position.x, m_Target.position.y, transform.position.z);
 	}
 	
@@ -25,4 +28,16 @@ public class CameraMovement : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, targetPos, m_Smoothing);
         }
 	}
+
+    public void ToggleScreenKick()
+    {
+        anim.SetBool("KickActive", true);
+        StartCoroutine(KickCo());
+    }
+
+    public IEnumerator KickCo()
+    {
+        yield return null;
+        anim.SetBool("KickActive", false);
+    }
 }
