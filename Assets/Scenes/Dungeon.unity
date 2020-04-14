@@ -3942,8 +3942,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Target: {fileID: 1620504038}
   m_Smoothing: 0.1
-  m_MaxPosition: {x: 8.6, y: 8}
-  m_MinPosition: {x: 7.35, y: 5}
+  m_MaxPosition: {x: 8, y: 8}
+  m_MinPosition: {x: 7, y: 5}
+  camMin: {fileID: 11400000, guid: aa9635c8e07b21f4da4ee4509249a143, type: 2}
+  camMax: {fileID: 11400000, guid: b877e946dab926d4a84df58faaee5fcc, type: 2}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -4199,12 +4201,44 @@ PrefabInstance:
     - target: {fileID: 114513868996336836, guid: 0a9e69c503edb434a90d5679c806e22e,
         type: 3}
       propertyPath: playerPosition.x
-      value: 17
+      value: 55.5
       objectReference: {fileID: 0}
     - target: {fileID: 114513868996336836, guid: 0a9e69c503edb434a90d5679c806e22e,
         type: 3}
       propertyPath: playerPosition.y
-      value: 1
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513868996336836, guid: 0a9e69c503edb434a90d5679c806e22e,
+        type: 3}
+      propertyPath: cameraMax
+      value: 
+      objectReference: {fileID: 11400000, guid: bbc9b26804ccc0c4d9c5b4662d7842d8,
+        type: 2}
+    - target: {fileID: 114513868996336836, guid: 0a9e69c503edb434a90d5679c806e22e,
+        type: 3}
+      propertyPath: cameraMin
+      value: 
+      objectReference: {fileID: 11400000, guid: c72396b4d233bb840a92883f8ae72c88,
+        type: 2}
+    - target: {fileID: 114513868996336836, guid: 0a9e69c503edb434a90d5679c806e22e,
+        type: 3}
+      propertyPath: cameraNewMax.x
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513868996336836, guid: 0a9e69c503edb434a90d5679c806e22e,
+        type: 3}
+      propertyPath: cameraNewMax.y
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513868996336836, guid: 0a9e69c503edb434a90d5679c806e22e,
+        type: 3}
+      propertyPath: cameraNewMin.x
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513868996336836, guid: 0a9e69c503edb434a90d5679c806e22e,
+        type: 3}
+      propertyPath: cameraNewMin.y
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a9e69c503edb434a90d5679c806e22e, type: 3}

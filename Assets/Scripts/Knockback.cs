@@ -21,14 +21,14 @@ public class Knockback : MonoBehaviour {
 
                 if (other.gameObject.CompareTag("Enemy") && other.isTrigger)
                 {
-                    hitRigidBody.GetComponent<Enemy>().m_EnemyState = EnemyState.stagger;
+                    hitRigidBody.GetComponent<Enemy>().enemyState = EnemyState.stagger;
                     other.GetComponent<Enemy>().Knock(hitRigidBody, m_KnockTime, m_Damage);
                 }
                 if (other.gameObject.CompareTag("Player") && other.isTrigger)
                 {
-                    if (other.GetComponent<PlayerMovement>().m_CurrentState != PlayerState.stagger)
+                    if (other.GetComponent<PlayerMovement>().currentState != PlayerState.stagger)
                     {
-                        hitRigidBody.GetComponent<PlayerMovement>().m_CurrentState = PlayerState.stagger;
+                        hitRigidBody.GetComponent<PlayerMovement>().currentState = PlayerState.stagger;
                         other.GetComponent<PlayerMovement>().Knock(m_KnockTime, m_Damage);
                     }
                 }

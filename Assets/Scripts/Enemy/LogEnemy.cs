@@ -15,7 +15,7 @@ public class LogEnemy : Enemy {
 
 	// Use this for initialization
 	void Start () {
-        m_EnemyState = EnemyState.idle;
+        enemyState = EnemyState.idle;
         m_HomePosition = transform.position;
         m_Target = GameObject.FindGameObjectWithTag("Player").transform;
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -33,9 +33,9 @@ public class LogEnemy : Enemy {
         if (Vector2.Distance(transform.position, m_Target.position) <= m_ChaseRadius
             && Vector2.Distance(transform.position, m_Target.position) > m_AttackRadius)
         {
-            if (m_EnemyState == EnemyState.idle || m_EnemyState == EnemyState.walk && m_EnemyState != EnemyState.stagger)
+            if (enemyState == EnemyState.idle || enemyState == EnemyState.walk && enemyState != EnemyState.stagger)
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, m_Target.position, m_MoveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, m_Target.position, moveSpeed * Time.deltaTime);
                 ChangeAnim(temp - transform.position);
                 m_RigidBody.MovePosition(temp);
                 ChangeState(EnemyState.walk);
@@ -82,9 +82,9 @@ public class LogEnemy : Enemy {
 
     private void ChangeState(EnemyState newState)
     {
-        if(m_EnemyState != newState)
+        if(enemyState != newState)
         {
-            m_EnemyState = newState;
+            enemyState = newState;
         }
     }
 }

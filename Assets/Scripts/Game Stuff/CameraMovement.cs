@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
 
+
+
     [SerializeField] private Transform m_Target;
     [SerializeField] private float m_Smoothing;
 
@@ -12,8 +14,14 @@ public class CameraMovement : MonoBehaviour {
 
     private Animator anim;
 
+    [Header("Position Reset")]
+    public VectorValue camMin, camMax;
+
 	// Use this for initialization
 	void Start () {
+        m_MaxPosition = camMax.initialValue;
+        m_MinPosition = camMin.initialValue;
+
         anim = GetComponent<Animator>();
         transform.position = new Vector3(m_Target.position.x, m_Target.position.y, transform.position.z);
 	}

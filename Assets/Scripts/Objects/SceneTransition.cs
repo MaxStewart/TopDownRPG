@@ -11,6 +11,8 @@ public class SceneTransition : MonoBehaviour {
     public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
     public float fadeWait;
+    public Vector2 cameraNewMax, cameraNewMin;
+    public VectorValue cameraMin, cameraMax;
 
     private void Awake()
     {
@@ -39,11 +41,17 @@ public class SceneTransition : MonoBehaviour {
             Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
         }
         yield return new WaitForSeconds(fadeWait);
-
+        ResetCameraBounds();
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
         while (!asyncOperation.isDone)
         {
             yield return null;
         }
+    }
+
+    public void ResetCameraBounds()
+    {
+        cameraMax.initialValue = cameraNewMax;
+        cameraMin.initialValue = cameraNewMin; 
     }
 }

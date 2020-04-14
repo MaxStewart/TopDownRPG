@@ -20,9 +20,9 @@ public class PatrolEnemy : LogEnemy
         if (Vector2.Distance(transform.position, m_Target.position) <= m_ChaseRadius
             && Vector2.Distance(transform.position, m_Target.position) > m_AttackRadius)
         {
-            if (m_EnemyState == EnemyState.idle || m_EnemyState == EnemyState.walk && m_EnemyState != EnemyState.stagger)
+            if (enemyState == EnemyState.idle || enemyState == EnemyState.walk && enemyState != EnemyState.stagger)
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, m_Target.position, m_MoveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, m_Target.position, moveSpeed * Time.deltaTime);
                 ChangeAnim(temp - transform.position);
                 m_RigidBody.MovePosition(temp);
                 m_Anim.SetBool("wakeUp", true);
@@ -33,7 +33,7 @@ public class PatrolEnemy : LogEnemy
             m_Anim.SetBool("wakeUp", true);
             if (Vector3.Distance(currentGoal.position, transform.position) > roundingDistance)
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, currentGoal.position, m_MoveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, currentGoal.position, moveSpeed * Time.deltaTime);
                 ChangeAnim(temp - transform.position);
                 m_RigidBody.MovePosition(temp);
             }

@@ -13,15 +13,15 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour {
 
-    [SerializeField] private Signal m_PlayerHealthSignal;
-    [SerializeField] private FloatValue m_CurrenHealth;
+    [SerializeField] private Signal playerHealthSignal;
+    [SerializeField] private FloatValue currenHealth;
 
-    private Rigidbody2D m_RigidBody;
-    private Animator m_Anim;
-    private Vector3 m_Change;
-    private float m_Speed = 5;
+    private Rigidbody2D rigidBody;
+    private Animator anim;
+    private Vector3 change;
+    private float speed = 5;
 
-    public PlayerState m_CurrentState;
+    public PlayerState currentState;
     public VectorValue startingPosition;
     public Inventory playerInventory;
     public SpriteRenderer collectedItemSprite;
@@ -29,12 +29,12 @@ public class PlayerMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        m_CurrentState = PlayerState.walk;
-        m_Anim = GetComponent<Animator>();
-        m_RigidBody = GetComponent<Rigidbody2D>();
+        currentState = PlayerState.walk;
+        anim = GetComponent<Animator>();
+        rigidBody = GetComponent<Rigidbody2D>();
         // Set the player to move down for hitbox bug
-        m_Anim.SetFloat("moveX", 0);
-        m_Anim.SetFloat("moveY", -1);
+        anim.SetFloat("moveX", 0);
+        anim.SetFloat("moveY", -1);
 
         transform.position = startingPosition.initialValue;
 	}
@@ -42,15 +42,15 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (m_CurrentState == PlayerState.interact) return;
-        m_Change = Vector2.zero;
-        m_Change.x = Input.GetAxisRaw("Horizontal"); // Raw gives either 0 or 1
-        m_Change.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetButtonDown("attack") && m_CurrentState != PlayerState.attack && m_CurrentState != PlayerState.stagger)
+        if (currentState == PlayerState.interact) return;
+        change = Vector2.zero;
+        change.x = Input.GetAxisRaw("Horizontal"); // Raw gives either 0 or 1
+        change.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
         {
             StartCoroutine(AttackRoutine());
         }
-        else if(m_CurrentState == PlayerState.walk || m_CurrentState == PlayerState.idle)
+        else if(currentState == PlayerState.walk || currentState == PlayerState.idle)
         {
             UpdateAnimationAndMove();
         }
@@ -58,14 +58,14 @@ public class PlayerMovement : MonoBehaviour {
 
     IEnumerator AttackRoutine()
     {
-        m_Anim.SetBool("attacking", true);
-        m_CurrentState = PlayerState.attack;
+        anim.SetBool("attacking", true);
+        currentState = PlayerState.attack;
         yield return null; // Wait 1 frame so animation can start but not repeat
-        m_Anim.SetBool("attacking", false);
+        anim.SetBool("attacking", false);
         yield return new WaitForSeconds(0.3f);
-        if(m_CurrentState != PlayerState.interact)
+        if(currentState != PlayerState.interact)
         {
-            m_CurrentState = PlayerState.walk;
+            currentState = PlayerState.walk;
         }        
     }
 
@@ -73,16 +73,16 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (playerInventory.currentItem != null)
         {
-            if (m_CurrentState != PlayerState.interact)
+            if (currentState != PlayerState.interact)
             {
-                m_Anim.SetBool("CollectItem", true);
-                m_CurrentState = PlayerState.interact;
+                anim.SetBool("CollectItem", true);
+                currentState = PlayerState.interact;
                 collectedItemSprite.sprite = playerInventory.currentItem.itemSprite;
             }
             else
             {
-                m_Anim.SetBool("CollectItem", false);
-                m_CurrentState = PlayerState.idle;
+                anim.SetBool("CollectItem", false);
+                currentState = PlayerState.idle;
                 collectedItemSprite.sprite = null;
                 playerInventory.currentItem = null;
             }
@@ -91,36 +91,36 @@ public class PlayerMovement : MonoBehaviour {
 
     private void UpdateAnimationAndMove()
     {
-        if (m_Change != Vector3.zero)
+        if (change != Vector3.zero)
         {
             MoveCharacter();
-            m_Anim.SetFloat("moveX", m_Change.x);
-            m_Anim.SetFloat("moveY", m_Change.y);
-            m_Anim.SetBool("moving", true);
+            anim.SetFloat("moveX", change.x);
+            anim.SetFloat("moveY", change.y);
+            anim.SetBool("moving", true);
         }
         else
         {
-            m_Anim.SetBool("moving", false);
+            anim.SetBool("moving", false);
         }
     }
 
     void MoveCharacter()
     {
-        m_Change.Normalize(); // So diagonal movement isnt faster
-        m_RigidBody.MovePosition(transform.position + m_Change * m_Speed * Time.deltaTime);
+        change.Normalize(); // So diagonal movement isnt faster
+        rigidBody.MovePosition(transform.position + change * speed * Time.deltaTime);
     }
 
     public void Knock(float knockTime, float damage)
     {
-        m_CurrenHealth.RuntimeValue -= damage;
-        if (m_CurrenHealth.RuntimeValue > 0)
+        currenHealth.RuntimeValue -= damage;
+        if (currenHealth.RuntimeValue > 0)
         {
-            m_PlayerHealthSignal.Raise();
+            playerHealthSignal.Raise();
             StartCoroutine(KnockRoutine(knockTime));
         }
         else
         {
-            m_PlayerHealthSignal.Raise();
+            playerHealthSignal.Raise();
             this.gameObject.SetActive(false);
         }
     }
@@ -128,12 +128,12 @@ public class PlayerMovement : MonoBehaviour {
     private IEnumerator KnockRoutine(float knockTime)
     {
         playerHit.Raise();
-        if (m_RigidBody != null)
+        if (rigidBody != null)
         {
             yield return new WaitForSeconds(knockTime);
-            m_RigidBody.velocity = Vector2.zero;
-            m_CurrentState = PlayerState.idle;
-            m_RigidBody.velocity = Vector2.zero;
+            rigidBody.velocity = Vector2.zero;
+            currentState = PlayerState.idle;
+            rigidBody.velocity = Vector2.zero;
         }
     }
 }

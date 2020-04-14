@@ -12,25 +12,30 @@ public enum EnemyState
 
 public class Enemy : MonoBehaviour {
 
-    [SerializeField] protected string m_EnemyName;
-    [SerializeField] protected int m_BaseAttack;
-    [SerializeField] protected float m_MoveSpeed;
+    [Header("State Machine")]
+    public EnemyState enemyState;
 
-    protected float m_CurrentHealth;
+    [Header("Stats")]
+    [SerializeField] protected string enemyName;
+    [SerializeField] protected int baseAttack;
+    [SerializeField] protected float moveSpeed;
+    public FloatValue maxHealth;
 
-    public EnemyState m_EnemyState;
-    public FloatValue m_MaxHealth;
+    [Header("Death Effects")]
     public GameObject deathEffect;
+    private float deathEffectDelay = 1f;
+
+    protected float currentHealth;
 
     private void Awake()
     {
-        m_CurrentHealth = m_MaxHealth.m_InitialValue;
+        currentHealth = maxHealth.m_InitialValue;
     }
 
     private void TakeDamage(float damage)
     {
-        m_CurrentHealth -= damage;
-        if(m_CurrentHealth <= 0)
+        currentHealth -= damage;
+        if(currentHealth <= 0)
         {
             this.gameObject.SetActive(false);
             DeathEffect();
@@ -42,7 +47,7 @@ public class Enemy : MonoBehaviour {
         if (deathEffect != null)
         {
             GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-            Destroy(effect, 1f);
+            Destroy(effect, deathEffectDelay);
         }        
     }
 
@@ -58,7 +63,7 @@ public class Enemy : MonoBehaviour {
         {
             yield return new WaitForSeconds(knockTime);
             hitRigidbody.velocity = Vector2.zero;
-            m_EnemyState = EnemyState.idle;
+            enemyState = EnemyState.idle;
             hitRigidbody.velocity = Vector2.zero;
         }
 
