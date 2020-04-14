@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\PlayerScripts\HeartManager.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerHit.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\ScriptibleObjects\BoolValue.cs" />
     <Compile Include="Assets\Scripts\ScriptibleObjects\FloatValue.cs" />
     <Compile Include="Assets\Scripts\ScriptibleObjects\Inventory.cs" />
     <Compile Include="Assets\Scripts\ScriptibleObjects\Item.cs" />

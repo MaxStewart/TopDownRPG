@@ -5,14 +5,14 @@ using UnityEngine;
 [CreateAssetMenu]
 public class FloatValue : ScriptableObject, ISerializationCallbackReceiver {
 
-    public float m_InitialValue;
+    public float initialValue;
 
     [HideInInspector]
     public float RuntimeValue;
 
     public void OnAfterDeserialize()
     {
-        RuntimeValue = m_InitialValue;
+        RuntimeValue = initialValue;
     }
 
     public void OnBeforeSerialize()

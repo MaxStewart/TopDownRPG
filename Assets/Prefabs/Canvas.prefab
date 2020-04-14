@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 224084002}
   - component: {fileID: 224084004}
   - component: {fileID: 224084003}
+  - component: {fileID: 5613766877794812999}
+  - component: {fileID: 224084005}
   m_Layer: 5
-  m_Name: Image
+  m_Name: CoinInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,6 +75,47 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5613766877794812999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224084001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 338fdad86541b0e4bbf597726a2bdd99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInventory: {fileID: 11400000, guid: 28c5882fc60fabe4eb7a6fdf2148e724, type: 2}
+  coinDisplay: {fileID: 9000211841684616540}
+--- !u!114 &224084005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224084001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e6d8b1f438bf64d9d4018f0005d5e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Signal: {fileID: 11400000, guid: c9e0ddaa45fa31d4883b65516340c413, type: 2}
+  m_SignalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5613766877794812999}
+        m_MethodName: UpdateCoinCount
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1156828154980780
 GameObject:
   m_ObjectHideFlags: 0

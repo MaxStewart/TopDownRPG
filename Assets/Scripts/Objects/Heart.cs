@@ -25,9 +25,9 @@ public class Heart : Powerup
         if(other.CompareTag("Player") && !other.isTrigger)
         {
             playerHealth.RuntimeValue += amountToIncrease;
-            if (playerHealth.m_InitialValue > heartContainers.RuntimeValue * 2f)
+            if (playerHealth.initialValue > heartContainers.RuntimeValue * 2f)
             {
-                playerHealth.m_InitialValue = heartContainers.RuntimeValue * 2f;
+                playerHealth.initialValue = heartContainers.RuntimeValue * 2f;
             }            
             powerupSignal.Raise();
             Destroy(this.gameObject);

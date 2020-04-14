@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour {
 
     private void Awake()
     {
-        currentHealth = maxHealth.m_InitialValue;
+        currentHealth = maxHealth.initialValue;
     }
 
     private void TakeDamage(float damage)
