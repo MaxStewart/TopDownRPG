@@ -30,8 +30,8 @@ public class LogEnemy : Enemy {
 
     public virtual void CheckDistance()
     {
-        if (Vector2.Distance(transform.position, m_Target.position) <= m_ChaseRadius
-            && Vector2.Distance(transform.position, m_Target.position) > m_AttackRadius)
+        float distanceToTarget = Vector2.Distance(transform.position, m_Target.position);
+        if (distanceToTarget <= m_ChaseRadius && distanceToTarget > m_AttackRadius)
         {
             if (enemyState == EnemyState.idle || enemyState == EnemyState.walk && enemyState != EnemyState.stagger)
             {
