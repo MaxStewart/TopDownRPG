@@ -42,7 +42,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: a7778a74b6654554da488421a1f4db3b, type: 3}
-    totalSpriteSurfaceArea: 586073
+    totalSpriteSurfaceArea: 592985
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -727,11 +727,14 @@ SpriteAtlas:
   - {fileID: 21302144, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21302016, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21301392, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
+  - {fileID: 21302146, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21302126, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21301390, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
+  - {fileID: 21302148, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21302124, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21302116, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21301388, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
+  - {fileID: 21302150, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21302122, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21302118, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
   - {fileID: 21302010, guid: ef910fe9918ba2a4794d42fa3bc04da8, type: 3}
@@ -2475,11 +2478,14 @@ SpriteAtlas:
   - Overworld_1072
   - Overworld_1008
   - Overworld_696
+  - Overworld_1073
   - Overworld_1063
   - Overworld_695
+  - Overworld_1074
   - Overworld_1062
   - Overworld_1058
   - Overworld_694
+  - Overworld_1075
   - Overworld_1061
   - Overworld_1059
   - Overworld_1005

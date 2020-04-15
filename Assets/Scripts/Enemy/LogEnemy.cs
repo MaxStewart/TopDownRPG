@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class LogEnemy : Enemy {
 
-    public float m_ChaseRadius;
-    public float m_AttackRadius;
+    public float chaseRadius; // Default should be 3.5
+    public float attackRadius; // Default should be 1
 
-    public Rigidbody2D m_RigidBody;
-    public Transform m_Target;
-    public Animator m_Anim;
+    [HideInInspector]
+    public Rigidbody2D rigidBody;
+    [HideInInspector]
+    public Transform target;
+    [HideInInspector]
+    public Animator anim;
 
-    public Vector2 m_HomePosition;
+    private Vector2 m_HomePosition;
 
 	// Use this for initialization
 	void Start () {
         enemyState = EnemyState.idle;
         m_HomePosition = transform.position;
-        m_Target = GameObject.FindGameObjectWithTag("Player").transform;
-        m_RigidBody = GetComponent<Rigidbody2D>();
-        m_Anim = GetComponent<Animator>();
-        m_Anim.SetBool("wakeUp", true);
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        rigidBody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        anim.SetBool("wakeUp", true);
 	}
 
     // Update is called once per frame
@@ -30,28 +33,28 @@ public class LogEnemy : Enemy {
 
     public virtual void CheckDistance()
     {
-        float distanceToTarget = Vector2.Distance(transform.position, m_Target.position);
-        if (distanceToTarget <= m_ChaseRadius && distanceToTarget > m_AttackRadius)
+        float distanceToTarget = Vector2.Distance(transform.position, target.position);
+        if (distanceToTarget <= chaseRadius && distanceToTarget > attackRadius)
         {
             if (enemyState == EnemyState.idle || enemyState == EnemyState.walk && enemyState != EnemyState.stagger)
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, m_Target.position, moveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                 ChangeAnim(temp - transform.position);
-                m_RigidBody.MovePosition(temp);
+                rigidBody.MovePosition(temp);
                 ChangeState(EnemyState.walk);
-                m_Anim.SetBool("wakeUp", true);
+                anim.SetBool("wakeUp", true);
             }
-        } else if (Vector2.Distance(transform.position, m_Target.position) > m_ChaseRadius)
+        } else if (Vector2.Distance(transform.position, target.position) > chaseRadius)
         {
             ChangeState(EnemyState.idle);
-            m_Anim.SetBool("wakeUp", false);
+            anim.SetBool("wakeUp", false);
         }
     }
 
     private void SetAnimFloat(Vector2 setVector)
     {
-        m_Anim.SetFloat("moveX", setVector.x);
-        m_Anim.SetFloat("moveY", setVector.y);
+        anim.SetFloat("moveX", setVector.x);
+        anim.SetFloat("moveY", setVector.y);
     }
 
     public void ChangeAnim(Vector2 direction)

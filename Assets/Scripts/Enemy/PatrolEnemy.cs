@@ -6,9 +6,10 @@ public class PatrolEnemy : LogEnemy
 {
 
     public Transform[] path;
-    public int currentPoint;
-    public Transform currentGoal;
-    public float roundingDistance = 0.2f;
+
+    private int currentPoint;
+    private Transform currentGoal;
+    private float roundingDistance = 0.2f;
 
     public override void CheckDistance()
     {
@@ -17,25 +18,25 @@ public class PatrolEnemy : LogEnemy
             ChangeGoal();
         }
 
-        if (Vector2.Distance(transform.position, m_Target.position) <= m_ChaseRadius
-            && Vector2.Distance(transform.position, m_Target.position) > m_AttackRadius)
+        if (Vector2.Distance(transform.position, target.position) <= chaseRadius
+            && Vector2.Distance(transform.position, target.position) > attackRadius)
         {
             if (enemyState == EnemyState.idle || enemyState == EnemyState.walk && enemyState != EnemyState.stagger)
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, m_Target.position, moveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                 ChangeAnim(temp - transform.position);
-                m_RigidBody.MovePosition(temp);
-                m_Anim.SetBool("wakeUp", true);
+                rigidBody.MovePosition(temp);
+                anim.SetBool("wakeUp", true);
             }
         }
-        else if (Vector2.Distance(transform.position, m_Target.position) > m_ChaseRadius)
+        else if (Vector2.Distance(transform.position, target.position) > chaseRadius)
         {
-            m_Anim.SetBool("wakeUp", true);
+            anim.SetBool("wakeUp", true);
             if (Vector3.Distance(currentGoal.position, transform.position) > roundingDistance)
             {
                 Vector3 temp = Vector3.MoveTowards(transform.position, currentGoal.position, moveSpeed * Time.deltaTime);
                 ChangeAnim(temp - transform.position);
-                m_RigidBody.MovePosition(temp);
+                rigidBody.MovePosition(temp);
             }
             else
             {

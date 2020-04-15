@@ -10,16 +10,16 @@ public enum EnemyState
     stagger
 }
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour
+{
 
-    [Header("State Machine")]
     public EnemyState enemyState;
 
     [Header("Stats")]
     [SerializeField] protected string enemyName;
     [SerializeField] protected int baseAttack;
     [SerializeField] protected float moveSpeed;
-    public FloatValue maxHealth;
+    [SerializeField] private FloatValue maxHealth;
 
     [Header("Death Effects")]
     public GameObject deathEffect;
