@@ -13,6 +13,7 @@ public class WanderingNPC : MonoBehaviour
     private Rigidbody2D rigidbody;
     private int currentPoint = 0;
     private Animator anim;
+    private bool canMove = true;
 
 
     // Start is called before the first frame update
@@ -20,12 +21,20 @@ public class WanderingNPC : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody2D>();
+
+        if (currentGoal == null)
+        {
+            currentGoal = path[currentPoint];
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveNPC();
+        if (canMove)
+        {
+            MoveNPC();
+        }
     }
 
     private void MoveNPC()
@@ -44,8 +53,19 @@ public class WanderingNPC : MonoBehaviour
         }
         else
         {
-            ChangeGoal();
+            StartCoroutine(SitIdleCo());
         }
+    }
+
+    IEnumerator SitIdleCo()
+    {
+        canMove = false;
+        float timeToWait = Random.Range(3, 10);
+
+        anim.SetBool("isMoving", false);
+        yield return new WaitForSeconds(timeToWait);
+        ChangeGoal();
+        canMove = true;
     }
 
     private void ChangeGoal()
